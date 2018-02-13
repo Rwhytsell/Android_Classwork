@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="80dp"
+    >
+
+    <TextView
+        android:id="@+id/ColorTab"
+        android:layout_width="25dp"
+        android:layout_height="match_parent"
+        android:background="@color/colorAccent"
+        />
+
+    <TextView
+        android:id="@+id/TaskMessage"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:text="TASK MESSAGE"/>
+
+    <TextView
+        android:id="@+id/DeadlineText"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:textColor="@android:color/darker_gray"
+        android:text="DEADLINE TEXT"
+        />
+
+    <CheckBox
+        android:id="@+id/TaskCheckbox"
+        android:layout_width="25dp"
+        android:layout_height="25dp" />
+
+</LinearLayout>

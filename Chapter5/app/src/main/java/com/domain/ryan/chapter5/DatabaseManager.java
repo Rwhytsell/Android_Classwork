@@ -45,15 +45,15 @@ public class DatabaseManager extends SQLiteOpenHelper{
         SQLiteDatabase db = this.getWritableDatabase();
         String sqlInsert = "insert into " + TABLE_TASK;
         sqlInsert += " values( null, \"" + task.getMessage();
-        sqlInsert += "\", \"" + task.getDeadline();
-        sqlInsert += "\", 0, null)";
+        sqlInsert += "\", \"" + task.getDeadline().getTime();
+        sqlInsert += "\", " + (task.getComplete() ? 1: 0) + ", null)";
 
         db.execSQL(sqlInsert);
         db.close();
     }
 
     public void deleteById( int id) {
-        SQLiteDatabase db = this .getWritableDatabase();
+        SQLiteDatabase db = this.getWritableDatabase();
         String sqlDelete = "delete from " + TABLE_TASK;
         sqlDelete += " where " + ID + " = " + id;
 

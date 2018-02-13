@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.EditText;
 
+import java.util.Calendar;
 import java.util.Date;
 
 public class Newtask extends AppCompatActivity {
@@ -31,7 +32,12 @@ public class Newtask extends AppCompatActivity {
         cv.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
-                selectedDate = new Date(year, month, dayOfMonth);
+                Calendar cal = Calendar.getInstance();
+                cal.set(Calendar.YEAR, year);
+                cal.set(Calendar.MONTH, month);
+                cal.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+
+                selectedDate = cal.getTime();
             }
         });
     }
@@ -41,7 +47,6 @@ public class Newtask extends AppCompatActivity {
         String taskText = text.getText().toString();
         Date deadline = selectedDate;
         Task newTask = new Task(taskText,deadline);
-        Log.i("Insert", "New task inserted: " + newTask.getDeadline());
         dbManager.insert(newTask);
         finish();
     }

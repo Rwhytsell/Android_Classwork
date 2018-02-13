@@ -51,6 +51,18 @@ public class Task {
         this.ID = ID;
         this.Message = m;
         this.Deadline = d;
+        if(c == 1)
+        {
+            this.Complete = true;
+        }
+        else{
+            this.Complete = false;
+        }
+    }
+
+    public Task(String m, Date d, int c) {
+        this.Message = m;
+        this.Deadline = d;
         this.Complete = false;
         if(c == 1)
         {
