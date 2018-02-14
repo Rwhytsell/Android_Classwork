@@ -11,7 +11,6 @@ import java.util.ArrayList;
 /**
  * Created by user on 2/13/18.
  */
-
 public class DatabaseManager extends SQLiteOpenHelper{
     private static final String DATABASE_NAME = "taskDB";
     private static final int DATABASE_VERSION = 2;
@@ -22,6 +21,11 @@ public class DatabaseManager extends SQLiteOpenHelper{
     private static final String COMPLETED = "completed";
     private static final String COMPLETED_DATE = "completed_date";
 
+    /**
+     * Instantiates a new Database manager.
+     *
+     * @param context the context
+     */
     public DatabaseManager( Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
@@ -41,6 +45,11 @@ public class DatabaseManager extends SQLiteOpenHelper{
         onCreate(db);
     }
 
+    /**
+     * Insert.
+     *
+     * @param task the task
+     */
     public void insert( Task task ) {
         SQLiteDatabase db = this.getWritableDatabase();
         String sqlInsert = "insert into " + TABLE_TASK;
@@ -52,6 +61,11 @@ public class DatabaseManager extends SQLiteOpenHelper{
         db.close();
     }
 
+    /**
+     * Delete by id.
+     *
+     * @param id the id
+     */
     public void deleteById( int id) {
         SQLiteDatabase db = this.getWritableDatabase();
         String sqlDelete = "delete from " + TABLE_TASK;
@@ -61,6 +75,11 @@ public class DatabaseManager extends SQLiteOpenHelper{
         db.close();
     }
 
+    /**
+     * Select all array list.
+     *
+     * @return the array list
+     */
     public ArrayList<Task> selectAll() {
         String sqlQuery = "select * from " + TABLE_TASK;
 
@@ -80,6 +99,12 @@ public class DatabaseManager extends SQLiteOpenHelper{
         return tasks;
     }
 
+    /**
+     * Select by id task.
+     *
+     * @param id the id
+     * @return the task
+     */
     public Task selectById(int id){
         String sqlQuery = "select * from " + TABLE_TASK;
         sqlQuery += " where " + ID + " = " + id;
@@ -97,6 +122,12 @@ public class DatabaseManager extends SQLiteOpenHelper{
         return task;
     }
 
+    /**
+     * Update by id.
+     *
+     * @param id      the id
+     * @param newTask the new task
+     */
     public void updateById(int id, Task newTask) {
         deleteById(id);
         insert(newTask);

@@ -9,6 +9,9 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
+/**
+ * The type Main activity.
+ */
 public class MainActivity extends AppCompatActivity {
     private DatabaseManager dbManager;
     @Override
@@ -29,11 +32,19 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * New task.
+     *
+     * @param view the view
+     */
     public void newTask(View view) {
         Intent newtask = new Intent(this, Newtask.class);
         startActivity(newtask);
     }
 
+    /**
+     * Set list view.
+     */
     public void setListView(){
         ArrayList<Task> tasks = dbManager.selectAll();
 

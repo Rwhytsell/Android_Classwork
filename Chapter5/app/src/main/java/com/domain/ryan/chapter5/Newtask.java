@@ -12,6 +12,9 @@ import android.widget.EditText;
 import java.util.Calendar;
 import java.util.Date;
 
+/**
+ * The type Newtask.
+ */
 public class Newtask extends AppCompatActivity {
     private DatabaseManager dbManager;
     private Date selectedDate;
@@ -41,6 +44,12 @@ public class Newtask extends AppCompatActivity {
             }
         });
     }
+
+    /**
+     * Insert.
+     *
+     * @param v the v
+     */
     public void insert (View v){
         EditText text = findViewById(R.id.TaskText);
         CalendarView cview = findViewById(R.id.calendarView);

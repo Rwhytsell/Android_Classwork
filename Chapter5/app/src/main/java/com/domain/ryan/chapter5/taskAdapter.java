@@ -13,7 +13,6 @@ import java.util.Date;
 /**
  * Created by user on 2/13/18.
  */
-
 public class taskAdapter extends BaseAdapter{
     private Context context;
     private Task[] tasks;
@@ -21,6 +20,13 @@ public class taskAdapter extends BaseAdapter{
     private int count = 0;
     private DatabaseManager db = null;
 
+    /**
+     * Instantiates a new Task adapter.
+     *
+     * @param context the context
+     * @param data    the data
+     * @param db      the db
+     */
     public taskAdapter(Context context, Task[] data, DatabaseManager db)
     {
         this.context = context;
@@ -86,6 +92,13 @@ public class taskAdapter extends BaseAdapter{
         return vi;
     }
 
+    /**
+     * Set color tag.
+     *
+     * @param vi       the vi
+     * @param thisTask the this task
+     * @param today    the today
+     */
     protected void setColorTag(View vi, Task thisTask, Date today){
 
         TextView colorTag = vi.findViewById(R.id.ColorTab);
