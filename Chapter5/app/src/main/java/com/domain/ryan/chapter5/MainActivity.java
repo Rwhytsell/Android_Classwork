@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
         Task[] taskArray = (Task[]) tasks.toArray(new Task[0]);
 
         ListView lView = findViewById(R.id.TaskList);
-        lView.setAdapter(new taskAdapter(this, taskArray, dbManager));
+        lView.setAdapter(new taskAdapter(this, taskArray, dbManager,lView));
     }
 
     protected void onResume(){

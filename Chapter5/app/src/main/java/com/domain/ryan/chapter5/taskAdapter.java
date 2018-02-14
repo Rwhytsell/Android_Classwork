@@ -1,24 +1,31 @@
 package com.domain.ryan.chapter5;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.CheckBox;
+import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
  * Created by user on 2/13/18.
  */
+
 public class taskAdapter extends BaseAdapter{
     private Context context;
     private Task[] tasks;
     private static LayoutInflater inflater = null;
     private int count = 0;
     private DatabaseManager db = null;
+    private View ListView;
 
     /**
      * Instantiates a new Task adapter.
@@ -27,13 +34,14 @@ public class taskAdapter extends BaseAdapter{
      * @param data    the data
      * @param db      the db
      */
-    public taskAdapter(Context context, Task[] data, DatabaseManager db)
+    public taskAdapter(Context context, Task[] data, DatabaseManager db, View ListView)
     {
         this.context = context;
         this.tasks = data;
         inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         this.count = this.tasks.length;
         this.db = db;
+        this.ListView = ListView;
     }
 
     @Override
@@ -76,16 +84,19 @@ public class taskAdapter extends BaseAdapter{
             public void onClick(View view) {
                 int id = thisTask.getID();
                 Task newTask = new Task(thisTask.getMessage(), thisTask.getDeadline(), thisTask.getComplete() ? 0 : 1);
+                newTask.setCompleted();
                 db.deleteById(id);
                 db.insert(newTask);
-                view.setActivated(newTask.getComplete());
+                ((MainActivity) context).setListView();
             }
         });
 
         vi.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
-                db.deleteById(thisTask.getID());
+                Intent editTask = new Intent(context, Edittask.class);
+                TaskHolder.getInstance().setTask(thisTask);
+                context.startActivity(editTask);
                 return true;
             }
         });
@@ -114,5 +125,14 @@ public class taskAdapter extends BaseAdapter{
         else{
             colorTag.setBackgroundResource(R.color.Green);
         }
+    }
+
+    public void setListView(){
+        ArrayList<Task> tasks = db.selectAll();
+
+        Task[] taskArray = (Task[]) tasks.toArray(new Task[0]);
+
+        ListView lView = ListView.findViewById(R.id.TaskList);
+        lView.setAdapter(new taskAdapter(context, taskArray, db, ListView));
     }
 }

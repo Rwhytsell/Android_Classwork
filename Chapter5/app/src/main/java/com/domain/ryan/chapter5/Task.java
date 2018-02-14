@@ -1,14 +1,16 @@
 package com.domain.ryan.chapter5;
 
-import java.util.Date;
+import java.sql.Date;
+import java.util.Calendar;
 
 /**
  * Created by user on 2/13/18.
  */
+
 public class Task {
     private int ID;
     private String Message;
-    private Date Deadline;
+    private long Deadline;
     private Boolean Complete;
     private Date Date_Complete;
 
@@ -45,7 +47,7 @@ public class Task {
      * @return the deadline
      */
     public Date getDeadline() {
-        return Deadline;
+        return new Date(Deadline);
     }
 
     /**
@@ -54,7 +56,7 @@ public class Task {
      * @param deadline the deadline
      */
     public void setDeadline(Date deadline) {
-        Deadline = deadline;
+        Deadline = deadline.getTime();
     }
 
     /**
@@ -83,7 +85,7 @@ public class Task {
      */
     public Task(String m, Date d) {
         this.Message = m;
-        this.Deadline = d;
+        this.Deadline = d.getTime();
         this.Complete = false;
     }
 
@@ -98,7 +100,7 @@ public class Task {
     public Task(int ID, String m, Date d, int c) {
         this.ID = ID;
         this.Message = m;
-        this.Deadline = d;
+        this.Deadline = d.getTime();
         if(c == 1)
         {
             this.Complete = true;
@@ -117,7 +119,7 @@ public class Task {
      */
     public Task(String m, Date d, int c) {
         this.Message = m;
-        this.Deadline = d;
+        this.Deadline = d.getTime();
         this.Complete = false;
         if(c == 1)
         {
@@ -129,7 +131,7 @@ public class Task {
      * Set completed.
      */
     public void setCompleted(){
-        this.Date_Complete = new Date();
+        this.Date_Complete = new Date(Calendar.getInstance().getTimeInMillis());
     }
 
 

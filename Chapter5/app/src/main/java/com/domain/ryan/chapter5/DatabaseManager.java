@@ -5,12 +5,13 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import java.util.Date;
+import java.sql.Date;
 import java.util.ArrayList;
 
 /**
  * Created by user on 2/13/18.
  */
+
 public class DatabaseManager extends SQLiteOpenHelper{
     private static final String DATABASE_NAME = "taskDB";
     private static final int DATABASE_VERSION = 2;
@@ -34,7 +35,7 @@ public class DatabaseManager extends SQLiteOpenHelper{
     public void onCreate(SQLiteDatabase db) {
             String sqlCreate = "create table " + TABLE_TASK + "(" + ID;
             sqlCreate += " integer primary key autoincrement, " + MESSAGE + " text, ";
-            sqlCreate += DEADLINE + " date, " + COMPLETED + " integer, " + COMPLETED_DATE + "date)";
+            sqlCreate += DEADLINE + " integer, " + COMPLETED + " integer, " + COMPLETED_DATE + "date)";
 
             db.execSQL(sqlCreate);
     }
@@ -81,7 +82,7 @@ public class DatabaseManager extends SQLiteOpenHelper{
      * @return the array list
      */
     public ArrayList<Task> selectAll() {
-        String sqlQuery = "select * from " + TABLE_TASK;
+        String sqlQuery = "select * from " + TABLE_TASK + " order by " + COMPLETED + " , " + DEADLINE;
 
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -91,7 +92,7 @@ public class DatabaseManager extends SQLiteOpenHelper{
         while( cursor.moveToNext()) {
             Task currentTask = new Task( Integer.parseInt(cursor.getString( 0)),
                     cursor.getString( 1),
-                    new Date(cursor.getLong(2)*1000),
+                    new Date(cursor.getLong(2)),
                     Integer.parseInt(cursor.getString(3)));
             tasks.add(currentTask);
         }
