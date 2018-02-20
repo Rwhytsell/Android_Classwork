@@ -83,6 +83,7 @@ public class UserData {
      * @return the total tip
      */
     public double getTotalTip() {
+        totalTip = bill * (tipPercentage / 100);
         return totalTip;
     }
 
@@ -93,6 +94,7 @@ public class UserData {
      * @return the total bill
      */
     public double getTotalBill() {
+        totalBill = bill + totalTip;
         return totalBill;
     }
 
@@ -102,6 +104,8 @@ public class UserData {
      * @return the tip per guest
      */
     public double getTipPerGuest() {
+        tipPerGuest = totalTip / guests;
+
         return tipPerGuest;
     }
 
@@ -112,6 +116,7 @@ public class UserData {
      * @return the total per guest
      */
     public double getTotalPerGuest() {
+        totalPerGuest = totalBill / guests;
         return totalPerGuest;
     }
 
