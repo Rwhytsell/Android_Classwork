@@ -5,11 +5,14 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
-import android.view.KeyEvent;
-import android.view.View;
 import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.content.res.Configuration;
+import android.content.res.Resources;
+import android.graphics.Point;
+import android.util.DisplayMetrics;
+import android.util.Log;
 
 import java.util.Locale;
 
@@ -18,7 +21,8 @@ public class MainActivity extends AppCompatActivity {
     UserData ud = new UserData();
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
