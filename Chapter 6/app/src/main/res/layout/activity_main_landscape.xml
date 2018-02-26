@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="41dp"
         android:layout_marginEnd="52dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="28dp"
         android:ems="10"
         android:hint="Enter the total bill: 0.00"
         android:inputType="numberDecimal"
@@ -23,7 +23,7 @@
         android:layout_width="219dp"
         android:layout_height="32dp"
         android:layout_marginEnd="48dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="36dp"
         android:max="20"
         android:min="1"
         android:progress="2"
@@ -73,9 +73,9 @@
         android:layout_width="219dp"
         android:layout_height="32dp"
         android:layout_marginEnd="48dp"
-        android:layout_marginTop="56dp"
-        android:min="0"
+        android:layout_marginTop="40dp"
         android:max="100"
+        android:min="0"
         android:progress="15"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/GuestInput" />
@@ -85,12 +85,12 @@
         android:layout_width="wrap_content"
         android:layout_height="17dp"
         android:layout_marginBottom="56dp"
-        android:layout_marginStart="384dp"
+        android:layout_marginEnd="80dp"
         android:layout_marginTop="17dp"
         android:text="Total Bill"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/TotalBillNumber"
         app:layout_constraintTop_toBottomOf="@+id/TotalGuestNumber"
         app:layout_constraintVertical_bias="1.0" />
 
@@ -99,12 +99,12 @@
         android:layout_width="wrap_content"
         android:layout_height="23dp"
         android:layout_marginBottom="11dp"
-        android:layout_marginStart="200dp"
+        android:layout_marginEnd="65dp"
         android:layout_marginTop="17dp"
         android:text="Total/Guest"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/TipGuestNumber"
+        app:layout_constraintEnd_toStartOf="@+id/TotalGuestNumber"
         app:layout_constraintTop_toBottomOf="@+id/textView6"
         app:layout_constraintVertical_bias="0.0" />
 
@@ -137,11 +137,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
-        android:layout_marginStart="64dp"
+        android:layout_marginEnd="65dp"
         android:layout_marginTop="22dp"
         android:text="0"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView10"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/TotalBillNumber"
         app:layout_constraintVertical_bias="1.0" />
 
@@ -174,10 +174,10 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="52dp"
-        android:layout_marginStart="80dp"
+        android:layout_marginEnd="65dp"
         android:text="0"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView6" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
         android:id="@+id/GuestsNumber"

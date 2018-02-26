@@ -17,12 +17,12 @@ import android.util.Log;
 import java.util.Locale;
 
 /**
- * The type Main activity.
+ * The entry point into the app
  */
 public class MainActivity extends AppCompatActivity {
 
     /**
-     * The Ud.
+     * The UserData object that will hold all of the data and do the calculations
      */
     UserData ud = new UserData();
 
@@ -152,7 +152,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * Update.
+     * Update the textviews, giving it a dynamic feel
      */
     public void update(){
         TextView totalTip = findViewById(R.id.TotalTipNumber);
