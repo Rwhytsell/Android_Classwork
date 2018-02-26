@@ -16,8 +16,14 @@ import android.util.Log;
 
 import java.util.Locale;
 
+/**
+ * The type Main activity.
+ */
 public class MainActivity extends AppCompatActivity {
 
+    /**
+     * The Ud.
+     */
     UserData ud = new UserData();
 
     @Override
@@ -25,6 +31,10 @@ public class MainActivity extends AppCompatActivity {
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Configuration config = getResources().getConfiguration();
+        modifyLayout(config);
+
 
         EditText bill = findViewById(R.id.BillInput);
         bill.addTextChangedListener(new TextWatcher() {
@@ -98,16 +108,50 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+
+    public void onConfigurationChanged(Configuration newConfig)
+    {
+        super.onConfigurationChanged( newConfig );
+        modifyLayout(newConfig);
+    }
+
+    /**
+     * Modify layout.
+     *
+     * @param newConfig the new config
+     */
+    public void modifyLayout( Configuration newConfig)
+    {
+        if(newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE){
+            setContentView(R.layout.activity_main_landscape);}
+        else if( newConfig.orientation == Configuration.ORIENTATION_PORTRAIT){
+            setContentView(R.layout.activity_main);
+        }
+    }
+
+    /**
+     * Guests changed.
+     *
+     * @param i the
+     */
     public void guestsChanged(int i){
         ud.setGuests(i);
         update();
     }
 
+    /**
+     * Tip changed.
+     *
+     * @param i the
+     */
     public void tipChanged(int i){
         ud.setTipPercentage((double) i);
         update();
     }
 
+    /**
+     * Update.
+     */
     public void update(){
         TextView totalTip = findViewById(R.id.TotalTipNumber);
         TextView totalBill = findViewById(R.id.TotalBillNumber);

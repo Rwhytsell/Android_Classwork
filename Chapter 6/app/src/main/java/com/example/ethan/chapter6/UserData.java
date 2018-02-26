@@ -2,7 +2,6 @@ package com.example.ethan.chapter6;
 
 /**
  * Model used to hold user entered data and calculate other values from that data.
- *
  */
 public class UserData {
     private int guests;

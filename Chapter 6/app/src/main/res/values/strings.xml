@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Chapter 6</string>
+    <string name="portrait">PORTRAIT VIEW</string>
+    <string name="landscape">LANDSCAPE VIEW</string>
+
+
 </resources>
