@@ -10,9 +10,22 @@ public class Card {
     private int value;
     private int img;
 
+    /**
+     * Initializes a card with the correct suite value and image id
+     *
+     * @param _suite Suite of the card
+     * @param _val Value of the card (Ace 0)
+     * @param _img Image resource id
+     */
     public Card(String _suite, int _val, int _img) {
         suite = _suite;
-        value = _val;
+        if(_val >= 11){
+            value = 10;
+        }else if(_val == 0){
+            value = 11;
+        }else{
+            value = _val + 1;
+        }
         img = _img;
     }
 
