@@ -2,6 +2,7 @@ package com.domain.ryan.blackjack;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
@@ -34,7 +35,7 @@ public class GameActivity extends AppCompatActivity {
         final Button stayButton = findViewById(R.id.stay);
         stayButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                hit();
+                stay();
             }
         });
 
@@ -69,9 +70,9 @@ public class GameActivity extends AppCompatActivity {
      * This finishes the round
      */
     public void stay() {
-        player.getTotalVal();
-        dealer.getTotalVal();
-
+        int playerScore = player.getTotalVal();
+        int dealerScore = dealer.getTotalVal();
+        Log.e("Scores", "Player: " + playerScore + " Dealer: " + dealerScore);
     }
 
     /**
