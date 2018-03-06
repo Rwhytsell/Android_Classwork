@@ -45,6 +45,17 @@ public class GameActivity extends AppCompatActivity {
 
     }
 
+    protected void newGame()
+    {
+        deck = new Deck();
+        dealer = new Player();
+        player = new Player();
+        deck.shuffle();
+        deal();
+        update();
+
+    }
+
     /**
      * The initial deal of cards
      */
@@ -81,6 +92,10 @@ public class GameActivity extends AppCompatActivity {
 
     public void update() {
         //TODO check player score for bust
+        if (player.getTotalVal() > 21)
+        {
+            newGame();
+        }
         LinearLayout playerContent = findViewById(R.id.player_cards);
         LinearLayout dealerContent = findViewById(R.id.dealer_cards);
         playerContent.removeAllViews();
