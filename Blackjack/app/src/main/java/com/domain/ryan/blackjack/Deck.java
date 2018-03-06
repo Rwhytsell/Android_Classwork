@@ -1,130 +1,235 @@
 package com.domain.ryan.blackjack;
 
-import android.util.Log;
-
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.Collections;
 
 /**
- * Standard deck, modified for new use
- * @author groovyLlama devteam
- * @version 1.0
+ *     The deck class representing a physical deck of cards
+ *
  */
 
 public class Deck {
+    private ArrayList<Card> cards;
 
-        // class constants
-        private static final int SUITS = Card.suitAry.length;
-        private static final int RANKS = Card.rankAry.length;
-        private static final int SIZE = SUITS * RANKS;
+    /**
+     *     Initializes a new deck with 52 cards (No Jokers)
+     */
 
-        // class variables
-        private static int deckCount;
+    public Deck() {
+        cards = new ArrayList<Card>();
+        String[] suites = {"Hearts", "Diamonds", "Clubs", "Spades"};
 
-        // instance variables
-        private Card[] deck;
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 13; j++) {
+                switch(i) {
+                    case 0:
+                        switch(j) {
+                            case 0:
+                                cards.add(new Card(suites[i], j, R.drawable.heartace));
+                                break;
+                            case 1:
+                                cards.add(new Card(suites[i], j,  R.drawable.heart2));
+                                break;
+                            case 2:
+                                cards.add(new Card(suites[i], j,  R.drawable.heart3));
+                                break;
+                            case 3:
+                                cards.add(new Card(suites[i], j,  R.drawable.heart4));
+                                break;
+                            case 4:
+                                cards.add(new Card(suites[i], j,  R.drawable.heart5));
+                                break;
+                            case 5:
+                                cards.add(new Card(suites[i], j,  R.drawable.heart6));
+                                break;
+                            case 6:
+                                cards.add(new Card(suites[i], j,  R.drawable.heart7));
+                                break;
+                            case 7:
+                                cards.add(new Card(suites[i], j,  R.drawable.heart8));
+                                break;
+                            case 8:
+                                cards.add(new Card(suites[i], j,  R.drawable.heart9));
+                                break;
+                            case 9:
+                                cards.add(new Card(suites[i], j,  R.drawable.heart10));
+                                break;
+                            case 10:
+                                cards.add(new Card(suites[i], j,  R.drawable.heartjack));
+                                break;
+                            case 11:
+                                cards.add(new Card(suites[i], j,  R.drawable.heartqueen));
+                                break;
+                            case 12:
+                                cards.add(new Card(suites[i], j,  R.drawable.heartking));
+                                break;
 
-        // Constructors -----------------------------------------------------------
-        /**
-         * Creates and initializes a new deck of 52 standard playing cards.
-         * Aces are low and no jokers are present.
-         */
-        public Deck() {
+                        }
+                        break;
+                    case 1:
+                        switch(j) {
+                            case 0:
+                                cards.add(new Card(suites[i], j,  R.drawable.diamondace));
+                                break;
+                            case 1:
+                                cards.add(new Card(suites[i], j,  R.drawable.diamond2));
+                                break;
+                            case 2:
+                                cards.add(new Card(suites[i], j,  R.drawable.diamond3));
+                                break;
+                            case 3:
+                                cards.add(new Card(suites[i], j,  R.drawable.diamond4));
+                                break;
+                            case 4:
+                                cards.add(new Card(suites[i], j,  R.drawable.diamond5));
+                                break;
+                            case 5:
+                                cards.add(new Card(suites[i], j,  R.drawable.diamond6));
+                                break;
+                            case 6:
+                                cards.add(new Card(suites[i], j,  R.drawable.diamond7));
+                                break;
+                            case 7:
+                                cards.add(new Card(suites[i], j,  R.drawable.diamond8));
+                                break;
+                            case 8:
+                                cards.add(new Card(suites[i], j,  R.drawable.diamond9));
+                                break;
+                            case 9:
+                                cards.add(new Card(suites[i], j,  R.drawable.diamond10));
+                                break;
+                            case 10:
+                                cards.add(new Card(suites[i], j,  R.drawable.diamondjack));
+                                break;
+                            case 11:
+                                cards.add(new Card(suites[i], j,  R.drawable.diamondqueen));
+                                break;
+                            case 12:
+                                cards.add(new Card(suites[i], j,  R.drawable.diamondking));
+                                break;
 
-            deckCount = 0;
-            deck = new Card[SIZE];
-            init();
-        }
+                        }
+                        break;
+                    case 2:
+                        switch(j) {
+                            case 0:
+                                cards.add(new Card(suites[i], j,  R.drawable.clubace));
+                                break;
+                            case 1:
+                                cards.add(new Card(suites[i], j,  R.drawable.club2));
+                                break;
+                            case 2:
+                                cards.add(new Card(suites[i], j,  R.drawable.club3));
+                                break;
+                            case 3:
+                                cards.add(new Card(suites[i], j,  R.drawable.club4));
+                                break;
+                            case 4:
+                                cards.add(new Card(suites[i], j,  R.drawable.club5));
+                                break;
+                            case 5:
+                                cards.add(new Card(suites[i], j,  R.drawable.club6));
+                                break;
+                            case 6:
+                                cards.add(new Card(suites[i], j,  R.drawable.club7));
+                                break;
+                            case 7:
+                                cards.add(new Card(suites[i], j,  R.drawable.club8));
+                                break;
+                            case 8:
+                                cards.add(new Card(suites[i], j,  R.drawable.club9));
+                                break;
+                            case 9:
+                                cards.add(new Card(suites[i], j,  R.drawable.club10));
+                                break;
+                            case 10:
+                                cards.add(new Card(suites[i], j,  R.drawable.clubjack));
+                                break;
+                            case 11:
+                                cards.add(new Card(suites[i], j,  R.drawable.clubqueen));
+                                break;
+                            case 12:
+                                cards.add(new Card(suites[i], j,  R.drawable.clubking));
+                                break;
 
-        // Accessors --------------------------------------------------------------
-        /**
-         * Returns deck size.
-         * @return deck size
-         */
-        public int size() {
-            return SIZE;
-        }
+                        }
+                        break;
+                    case 3:
+                        switch(j) {
+                            case 0:
+                                cards.add(new Card(suites[i], j,  R.drawable.spadeace));
+                                break;
+                            case 1:
+                                cards.add(new Card(suites[i], j,  R.drawable.spade2));
+                                break;
+                            case 2:
+                                cards.add(new Card(suites[i], j,  R.drawable.spade3));
+                                break;
+                            case 3:
+                                cards.add(new Card(suites[i], j,  R.drawable.spade4));
+                                break;
+                            case 4:
+                                cards.add(new Card(suites[i], j,  R.drawable.spade5));
+                                break;
+                            case 5:
+                                cards.add(new Card(suites[i], j,  R.drawable.spade6));
+                                break;
+                            case 6:
+                                cards.add(new Card(suites[i], j,  R.drawable.spade7));
+                                break;
+                            case 7:
+                                cards.add(new Card(suites[i], j,  R.drawable.spade8));
+                                break;
+                            case 8:
+                                cards.add(new Card(suites[i], j,  R.drawable.spade9));
+                                break;
+                            case 9:
+                                cards.add(new Card(suites[i], j,  R.drawable.spade10));
+                                break;
+                            case 10:
+                                cards.add(new Card(suites[i], j,  R.drawable.spadejack));
+                                break;
+                            case 11:
+                                cards.add(new Card(suites[i], j,  R.drawable.spadequeen));
+                                break;
+                            case 12:
+                                cards.add(new Card(suites[i], j,  R.drawable.spadeking));
+                                break;
 
-        /**
-         * Returns number of cards that have been pulled from top of the deck.
-         * @return deck count
-         */
-        public int getDeckCount() {
-            return deckCount;
-        }
+                        }
 
-        /**
-         * Returns a card from the top of the deck.
-         * @return top card
-         */
-        public Card getCard () {
 
-            if (deckCount >= SIZE);
-            return deck[deckCount++];
-        }
-
-        public boolean isEmpty() {
-            return deckCount == SIZE;
-        }
-
-        // Functionality ----------------------------------------------------------
-        /**
-         * Initializes a deck of cards with proper suits and ranks.
-         */
-        private void init() {
-
-            for (int i = 0; i < SIZE; i++) {
-                deck[i] = new Card(i % RANKS, i / RANKS);
+                }
             }
         }
 
-        /**
-         * Shuffles deck of cards.
-         */
-        public void shuffle() {
+    }
 
+    /**
+     * Returns the full deck of cards
+     *
+     * @return card array
+     */
 
-            deckCount = 0;
-            for (int i = 0; i < SIZE; i++) {
+    public ArrayList<Card> getCards() {
+        return cards;
+    }
 
-                int rand = i + (int) (Math.random() * (SIZE - i));
-                Card temp = deck[rand];
-                deck[rand] = deck[i];
-                deck[i] = temp;
-            }
-        }
+    /**
+     * Shuffles deck of cards.
+     */
+    public void shuffle() {
+        Collections.shuffle(cards);
+    }
 
-        /**
-         * Creates a new deck and shuffles it
-         */
-        public void newDeck() {
-            init();
-            shuffle();
-        }
+    /**
+     * Removes the top card from the deck and returns it
+     *
+     * @return Card Top card on the deck
+     */
 
-        // Equality ---------------------------------------------------------------
-        @Override
-        public int hashCode() {
-            final int prime = 31;
-            int result = 1;
-            result = prime * result + Arrays.hashCode(deck);
-            return result;
-        }
+    public Card draw() {
+        return cards.remove(0);
+    }
 
-        @Override
-        public boolean equals(Object obj) {
-            if (this == obj) {
-                return true;
-            }
-            if (obj == null) {
-                return false;
-            }
-            if (getClass() != obj.getClass()) {
-                return false;
-            }
-            Deck other = (Deck) obj;
-            if (!Arrays.equals(deck, other.deck)) {
-                return false;
-            }
-            return true;
-        }
 }
