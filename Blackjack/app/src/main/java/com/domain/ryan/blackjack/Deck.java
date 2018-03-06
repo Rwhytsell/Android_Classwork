@@ -78,20 +78,6 @@ public class Deck {
         }
 
         /**
-         * Creates an easy win deck.
-         */
-        private void easyWin() {
-
-            int[] seq = { 12,5,11,4,10,3,9,2,8,1,7,0,6 };
-
-            int j = -1;
-            for (int i = 0; i < SIZE; i++) {
-                if (i % SUITS == 0) j++;
-                deck[i] = new Card(seq[j], i % SUITS);
-            }
-        }
-
-        /**
          * Shuffles deck of cards.
          */
         public void shuffle() {
@@ -105,6 +91,14 @@ public class Deck {
                 deck[rand] = deck[i];
                 deck[i] = temp;
             }
+        }
+
+        /**
+         * Creates a new deck and shuffles it
+         */
+        public void newDeck() {
+            init();
+            shuffle();
         }
 
         // Equality ---------------------------------------------------------------
