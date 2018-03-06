@@ -54,7 +54,7 @@
                 android:layout_gravity="center"
                 android:layout_margin="10dp"
                 android:backgroundTint="#444"
-                android:text="Hit Me"
+                android:text="Hit"
                 android:textColor="#FFFFFF" />
 
             <Button
