@@ -1,9 +1,8 @@
 package com.domain.ryan.blackjack;
 
 /**
- *     The card class represents a physical card.
+ * The card class represents a physical card.
  */
-
 public class Card {
 
     private String suite;
@@ -14,8 +13,8 @@ public class Card {
      * Initializes a card with the correct suite value and image id
      *
      * @param _suite Suite of the card
-     * @param _val Value of the card (Ace 0)
-     * @param _img Image resource id
+     * @param _val   Value of the card (Ace 0)
+     * @param _img   Image resource id
      */
     public Card(String _suite, int _val, int _img) {
         suite = _suite;
@@ -32,9 +31,8 @@ public class Card {
     /**
      * Used to get the suite of a card
      *
-     * @return suite
+     * @return suite suite
      */
-
     public String getSuite() {
         return suite;
     }
@@ -42,9 +40,8 @@ public class Card {
     /**
      * Used to get the value of a card
      *
-     * @return value
+     * @return value value
      */
-
     public int getValue() {
         return value;
     }
@@ -52,9 +49,8 @@ public class Card {
     /**
      * Used to get the image resource id of the card
      *
-     * @return img
+     * @return img img
      */
-
     public int getImg() {
         return img;
     }

@@ -4,17 +4,14 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 /**
- *     The deck class representing a physical deck of cards
- *
+ * The deck class representing a physical deck of cards
  */
-
 public class Deck {
     private ArrayList<Card> cards;
 
     /**
-     *     Initializes a new deck with 52 cards (No Jokers)
+     * Initializes a new deck with 52 cards (No Jokers)
      */
-
     public Deck() {
         cards = new ArrayList<Card>();
         String[] suites = {"Hearts", "Diamonds", "Clubs", "Spades"};
@@ -210,7 +207,6 @@ public class Deck {
      *
      * @return card array
      */
-
     public ArrayList<Card> getCards() {
         return cards;
     }
@@ -227,7 +223,6 @@ public class Deck {
      *
      * @return Card Top card on the deck
      */
-
     public Card draw() {
         return cards.remove(0);
     }
