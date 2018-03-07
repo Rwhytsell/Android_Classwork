@@ -87,6 +87,7 @@ public class GameActivity extends AppCompatActivity {
     public void hit() {
         player.addCard(deck.draw());
         update();
+        checkEndRound();
     }
 
     /**
@@ -99,18 +100,22 @@ public class GameActivity extends AppCompatActivity {
             dealer.addCard(deck.draw());
             update();
         }
-        if(dealer.getTotalVal() > player.getTotalVal()){
+        if(dealer.getTotalVal() > player.getTotalVal() && dealer.getTotalVal() < 22){
             noti.setMessage("The dealer wins!");
-        } else if (player.getTotalVal() > dealer.getTotalVal()) {
+        } else if (player.getTotalVal() > dealer.getTotalVal() && player.getTotalVal() < 22) {
             noti.setMessage("You win!");
-        } else {
+        } else if (player.getTotalVal() == dealer.getTotalVal()){
             noti.setMessage("Push!");
         }
-        AlertDialog alert11 = noti.create();
-        alert11.show();
+        if(!checkEndRound())
+        {
+            AlertDialog alert11 = noti.create();
+            alert11.show();
+        }
+
     }
 
-    public void checkLoss() {
+    public boolean checkEndRound() {
         boolean endOfRound = false;
         if (player.getTotalVal() > 21) {
             endOfRound = true;
@@ -125,6 +130,7 @@ public class GameActivity extends AppCompatActivity {
             AlertDialog alert11 = noti.create();
             alert11.show();
         }
+        return endOfRound;
     }
 
     /**
@@ -132,7 +138,6 @@ public class GameActivity extends AppCompatActivity {
      */
 
     public void update() {
-        checkLoss();
         LinearLayout playerContent = findViewById(R.id.player_cards);
         LinearLayout dealerContent = findViewById(R.id.dealer_cards);
         playerContent.removeAllViews();
