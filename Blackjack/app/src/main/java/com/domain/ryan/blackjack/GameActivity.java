@@ -130,7 +130,7 @@ public class GameActivity extends AppCompatActivity {
     /**
      * Check loss.
      */
-    public void checkLoss() {
+    public boolean checkEndRound() {
         boolean endOfRound = false;
         if (player.getTotalVal() > 21) {
             endOfRound = true;
