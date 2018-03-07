@@ -19,7 +19,7 @@ public class Card {
      */
     public Card(String _suite, int _val, int _img) {
         suite = _suite;
-        if(_val >= 11){
+        if(_val >= 10){
             value = 10;
         }else if(_val == 0){
             value = 11;

@@ -1,5 +1,7 @@
 package com.domain.ryan.blackjack;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -18,6 +20,7 @@ public class GameActivity extends AppCompatActivity {
     Deck deck = new Deck();
     Player dealer = new Player();
     Player player = new Player();
+    AlertDialog.Builder noti;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +46,16 @@ public class GameActivity extends AppCompatActivity {
         deal();
         update();
 
+        noti = new AlertDialog.Builder(this);
+        noti.setCancelable(false);
+
+        noti.setPositiveButton("Ok",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        newGame();
+                    }
+                }
+        );
     }
 
     protected void newGame()
@@ -81,9 +94,37 @@ public class GameActivity extends AppCompatActivity {
      * This finishes the round
      */
     public void stay() {
-        int playerScore = player.getTotalVal();
-        int dealerScore = dealer.getTotalVal();
-        Log.e("Scores", "Player: " + playerScore + " Dealer: " + dealerScore);
+        while (dealer.getTotalVal() < 17)
+        {
+            dealer.addCard(deck.draw());
+            update();
+        }
+        if(dealer.getTotalVal() > player.getTotalVal()){
+            noti.setMessage("The dealer wins!");
+        } else if (player.getTotalVal() > dealer.getTotalVal()) {
+            noti.setMessage("You win!");
+        } else {
+            noti.setMessage("Push!");
+        }
+        AlertDialog alert11 = noti.create();
+        alert11.show();
+    }
+
+    public void checkLoss() {
+        boolean endOfRound = false;
+        if (player.getTotalVal() > 21) {
+            endOfRound = true;
+            noti.setMessage("You have busted!");
+
+        }else if (dealer.getTotalVal() > 21) {
+            endOfRound = true;
+            noti.setMessage("The dealer has busted!");
+        }
+        if (endOfRound)
+        {
+            AlertDialog alert11 = noti.create();
+            alert11.show();
+        }
     }
 
     /**
@@ -91,11 +132,7 @@ public class GameActivity extends AppCompatActivity {
      */
 
     public void update() {
-        //TODO check player score for bust
-        if (player.getTotalVal() > 21)
-        {
-            newGame();
-        }
+        checkLoss();
         LinearLayout playerContent = findViewById(R.id.player_cards);
         LinearLayout dealerContent = findViewById(R.id.dealer_cards);
         playerContent.removeAllViews();
