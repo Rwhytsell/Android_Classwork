@@ -6,11 +6,13 @@ import java.util.ArrayList;
  * This class represents a physical player.
  * Mainly used for holding cards
  */
-
 public class Player {
 
     private ArrayList<Card> cards;
 
+    /**
+     * Instantiates a new Player.
+     */
     public Player() {
         cards = new ArrayList<Card>();
     }
@@ -20,7 +22,6 @@ public class Player {
      *
      * @return int value of players hand
      */
-
     public int getTotalVal() {
         int val = 0;
         for (int i = 0; i < cards.size(); i++) {
@@ -34,7 +35,6 @@ public class Player {
      *
      * @param c Card to be added
      */
-
     public void addCard(Card c) {
         cards.add(c);
     }

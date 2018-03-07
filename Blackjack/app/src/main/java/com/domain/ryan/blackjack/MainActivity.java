@@ -9,7 +9,6 @@ import android.widget.Button;
 /**
  * Entrypoint into the app
  */
-
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -29,7 +28,6 @@ public class MainActivity extends AppCompatActivity {
     /**
      * Called to start a new game
      */
-
     public void newGame() {
         Intent intent = new Intent(this, GameActivity.class);
         startActivity(intent);

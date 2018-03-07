@@ -14,12 +14,23 @@ import android.widget.LinearLayout;
 /**
  * The main game activity that handles the view for the actual game
  */
-
 public class GameActivity extends AppCompatActivity {
 
+    /**
+     * The Deck.
+     */
     Deck deck = new Deck();
+    /**
+     * The Dealer.
+     */
     Player dealer = new Player();
+    /**
+     * The Player.
+     */
     Player player = new Player();
+    /**
+     * The Noti.
+     */
     AlertDialog.Builder noti;
 
     @Override
@@ -58,6 +69,9 @@ public class GameActivity extends AppCompatActivity {
         );
     }
 
+    /**
+     * New game.
+     */
     protected void newGame()
     {
         deck = new Deck();
@@ -72,7 +86,6 @@ public class GameActivity extends AppCompatActivity {
     /**
      * The initial deal of cards
      */
-
     public void deal() {
         player.addCard(deck.draw());
         dealer.addCard(deck.draw());
@@ -83,7 +96,6 @@ public class GameActivity extends AppCompatActivity {
     /**
      * Called when user clicks hit button
      */
-
     public void hit() {
         player.addCard(deck.draw());
         update();
@@ -115,7 +127,10 @@ public class GameActivity extends AppCompatActivity {
 
     }
 
-    public boolean checkEndRound() {
+    /**
+     * Check loss.
+     */
+    public void checkLoss() {
         boolean endOfRound = false;
         if (player.getTotalVal() > 21) {
             endOfRound = true;
@@ -136,7 +151,6 @@ public class GameActivity extends AppCompatActivity {
     /**
      * This removes all of the cards and replaces them with the cards currently in the model
      */
-
     public void update() {
         LinearLayout playerContent = findViewById(R.id.player_cards);
         LinearLayout dealerContent = findViewById(R.id.dealer_cards);
