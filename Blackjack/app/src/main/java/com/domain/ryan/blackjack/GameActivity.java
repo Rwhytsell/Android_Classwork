@@ -70,7 +70,8 @@ public class GameActivity extends AppCompatActivity {
     }
 
     /**
-     * New game.
+     * The newGame method re-instantiates the deck, player, and dealer to
+     * start a new game.
      */
     protected void newGame()
     {
@@ -84,7 +85,8 @@ public class GameActivity extends AppCompatActivity {
     }
 
     /**
-     * The initial deal of cards
+     * The deal method deals out the initial 4 cards,
+     * giving 2 to the dealer and 2 to the player.
      */
     public void deal() {
         player.addCard(deck.draw());
@@ -128,9 +130,10 @@ public class GameActivity extends AppCompatActivity {
     }
 
     /**
-     * Check loss.
+     * The checkEndRound method checks to see if the
+     * dealer or player has busted.
      */
-    public void checkLoss() {
+    public boolean checkEndRound() {
         boolean endOfRound = false;
         if (player.getTotalVal() > 21) {
             endOfRound = true;
