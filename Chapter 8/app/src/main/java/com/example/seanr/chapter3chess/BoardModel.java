@@ -136,6 +136,12 @@ public class BoardModel
      */
     public ChessPiece getPiece(int row, int col)
     {
-        return board[row][col];
+        ChessPiece piece = board[row][col];
+        if(piece != null) return board[row][col];
+        else {
+            ChessPiece empty = new ChessPiece();
+            empty.setName("EPT");
+            return empty;
+        }
     }
 }
