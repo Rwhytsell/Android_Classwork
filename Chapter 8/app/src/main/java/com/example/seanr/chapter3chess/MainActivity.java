@@ -71,7 +71,9 @@ public class MainActivity extends AppCompatActivity
         public void onClick(View v)
         {
             int[] coords = mBoardView.getSquareCoordinates(v);
-            Log.i("Debug", "x: " + coords[0] + "y: " + coords[1]);
+            ChessPiece piece = mBoardModel.getPiece(coords[1],coords[0]);
+            Log.i("Debug", "x: " + coords[0] + " y: " + coords[1]);
+            Log.i("Debug", "Piece: " + piece.getName());
         }
 
     }
