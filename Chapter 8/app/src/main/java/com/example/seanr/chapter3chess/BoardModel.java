@@ -144,4 +144,9 @@ public class BoardModel
             return empty;
         }
     }
+
+    public void movePiece(int[] src, int[] dest)
+    {
+
+    }
 }

@@ -14,6 +14,8 @@ public class MainActivity extends AppCompatActivity
     private BoardView mBoardView;
     private BoardModel mBoardModel;
     private boolean holding = false;
+    private ChessPiece held;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -27,6 +29,12 @@ public class MainActivity extends AppCompatActivity
         getWindowManager().getDefaultDisplay().getSize(size);
         int w = size.x / 8;
         mBoardView = new BoardView(this, w, bh);
+        update();
+       setContentView(mBoardView);
+    }
+
+    private void update()
+    {
         for(int row = 0; row < 8; row++)
         {
             for (int col = 0; col < 8; col++)
@@ -36,17 +44,17 @@ public class MainActivity extends AppCompatActivity
                     switch (mBoardModel.getPiece(row,col).getName())
                     {
                         case "WP": mBoardView.getSquare(row, col).setImageResource(R.drawable.wpawn);
-                                     break;
+                            break;
                         case "BP": mBoardView.getSquare(row, col).setImageResource(R.drawable.bpawn);
-                                     break;
+                            break;
                         case "WR": mBoardView.getSquare(row, col).setImageResource(R.drawable.wrook);
-                                     break;
+                            break;
                         case "BR": mBoardView.getSquare(row, col).setImageResource(R.drawable.brook);
-                                    break;
+                            break;
                         case "WK": mBoardView.getSquare(row, col).setImageResource(R.drawable.wknight);
-                                    break;
+                            break;
                         case "BK": mBoardView.getSquare(row, col).setImageResource(R.drawable.bknight);
-                                    break;
+                            break;
                         case "WB": mBoardView.getSquare(row, col).setImageResource(R.drawable.wbishop);
                             break;
                         case "BB": mBoardView.getSquare(row, col).setImageResource(R.drawable.bbishop);
@@ -63,18 +71,27 @@ public class MainActivity extends AppCompatActivity
                 }
             }
         }
-       setContentView(mBoardView);
     }
 
-    private class ButtonHandler implements View.OnClickListener
-    {
-        public void onClick(View v)
-        {
+    private class ButtonHandler implements View.OnClickListener {
+        public void onClick(View v) {
             int[] coords = mBoardView.getSquareCoordinates(v);
-            ChessPiece piece = mBoardModel.getPiece(coords[1],coords[0]);
+            ChessPiece piece = mBoardModel.getPiece(coords[1], coords[0]);
             Log.i("Debug", "x: " + coords[0] + " y: " + coords[1]);
             Log.i("Debug", "Piece: " + piece.getName());
+            {
+                if (!holding) {
+                    if (piece.getName() != "EPT") {
+                        holding = true;
+                        held = piece;
+                    }
+                } else {
+                    if (piece.getName() == "EPT") {
+                        holding = false;
+                        piece = held;
+                    }
+                }
+            }
         }
-
     }
 }
