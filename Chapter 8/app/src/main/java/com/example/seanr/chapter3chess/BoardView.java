@@ -71,8 +71,8 @@ public class BoardView extends GridLayout
                 for (ImageView col: row){
                     if(col == v)
                     {
-                        result[0] = x;
-                        result[1] = y;
+                        result[1] = x;
+                        result[0] = y;
                         break outerloop;
                     }
                     x++;

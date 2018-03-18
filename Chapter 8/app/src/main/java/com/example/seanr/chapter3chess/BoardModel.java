@@ -147,6 +147,8 @@ public class BoardModel
 
     public void movePiece(int[] src, int[] dest)
     {
-
+        ChessPiece temp = board[src[1]][src[0]];
+        board[dest[0]][dest[1]] = temp;
+        board[src[0]][src[1]] = null;
     }
 }

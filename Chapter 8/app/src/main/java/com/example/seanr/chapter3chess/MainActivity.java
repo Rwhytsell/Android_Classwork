@@ -15,6 +15,7 @@ public class MainActivity extends AppCompatActivity
     private BoardModel mBoardModel;
     private boolean holding = false;
     private ChessPiece held;
+    private int[] heldLocation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -76,7 +77,7 @@ public class MainActivity extends AppCompatActivity
     private class ButtonHandler implements View.OnClickListener {
         public void onClick(View v) {
             int[] coords = mBoardView.getSquareCoordinates(v);
-            ChessPiece piece = mBoardModel.getPiece(coords[1], coords[0]);
+            ChessPiece piece = mBoardModel.getPiece(coords[0], coords[1]);
             Log.i("Debug", "x: " + coords[0] + " y: " + coords[1]);
             Log.i("Debug", "Piece: " + piece.getName());
             {
@@ -84,14 +85,16 @@ public class MainActivity extends AppCompatActivity
                     if (piece.getName() != "EPT") {
                         holding = true;
                         held = piece;
+                        heldLocation = coords;
                     }
                 } else {
                     if (piece.getName() == "EPT") {
                         holding = false;
-                        piece = held;
+                        mBoardModel.movePiece(heldLocation, coords);
                     }
                 }
             }
+            update();
         }
     }
 }
