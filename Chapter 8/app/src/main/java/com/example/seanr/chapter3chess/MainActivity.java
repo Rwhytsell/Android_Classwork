@@ -1,6 +1,8 @@
 package com.example.seanr.chapter3chess;
 
 import android.graphics.*;
+import android.media.AudioAttributes;
+import android.media.SoundPool;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -16,6 +18,9 @@ public class MainActivity extends AppCompatActivity
     private boolean holding = false;
     private ChessPiece held;
     private int[] heldLocation;
+    private SoundPool.Builder spb = new SoundPool.Builder();
+    private SoundPool sp = spb.build();
+    int pop = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -24,14 +29,20 @@ public class MainActivity extends AppCompatActivity
         mBoardModel = new BoardModel();
         mBoardModel.startGame();
 
+        pop = sp.load(this, R.raw.thud, 1);
+
         ButtonHandler bh = new ButtonHandler();
 
         Point size = new Point();
         getWindowManager().getDefaultDisplay().getSize(size);
         int w = size.x / 8;
+
         mBoardView = new BoardView(this, w, bh);
+
         update();
-       setContentView(mBoardView);
+        setContentView(mBoardView);
+
+
     }
 
     private void update()
@@ -87,11 +98,15 @@ public class MainActivity extends AppCompatActivity
                         holding = true;
                         held = piece;
                         heldLocation = coords;
+                        sp.play(pop,0.99f, 0.99f, 1, 0, 1.08844f);
                     }
                 } else {
                     if (piece.getName() == "EPT") {
                         holding = false;
                         mBoardModel.movePiece(heldLocation, coords);
+
+                    } else {
+
                     }
                 }
             }
