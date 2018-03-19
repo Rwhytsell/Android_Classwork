@@ -68,6 +68,7 @@ public class MainActivity extends AppCompatActivity
                             break;
                         case "BKG": mBoardView.getSquare(row, col).setImageResource(R.drawable.bking);
                             break;
+                        case "EPT": mBoardView.getSquare(row, col).setImageDrawable(null);
                     }
                 }
             }

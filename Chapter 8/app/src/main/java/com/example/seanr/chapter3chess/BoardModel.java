@@ -34,12 +34,14 @@ public class BoardModel
         Queen blackQueen = new Queen();
         King whiteKing = new King();
         King blackKing = new King();
+        ChessPiece blank = new ChessPiece();
+        blank.setName("EPT");
 
         for(int row = 0; row < 8; row++)
         {
             for (int col = 0; col < 8; col++)
             {
-                board[row][col] = null;
+                board[row][col] = blank;
                 if (row == 1 || row == 6)
                 {
                     if(row == 1)
@@ -134,21 +136,14 @@ public class BoardModel
      * @param col the col
      * @return the piece
      */
-    public ChessPiece getPiece(int row, int col)
-    {
-        ChessPiece piece = board[row][col];
-        if(piece != null) return board[row][col];
-        else {
-            ChessPiece empty = new ChessPiece();
-            empty.setName("EPT");
-            return empty;
-        }
-    }
+    public ChessPiece getPiece(int row, int col) {return board[row][col];}
 
     public void movePiece(int[] src, int[] dest)
     {
-        ChessPiece temp = board[src[1]][src[0]];
+        ChessPiece blank = new ChessPiece();
+        blank.setName("EPT");
+        ChessPiece temp = board[src[0]][src[1]];
         board[dest[0]][dest[1]] = temp;
-        board[src[0]][src[1]] = null;
+        board[src[0]][src[1]] = blank;
     }
 }
