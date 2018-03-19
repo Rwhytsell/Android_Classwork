@@ -1,5 +1,6 @@
 package com.example.seanr.chapter3chess;
 
+import android.content.res.Configuration;
 import android.graphics.*;
 import android.media.AudioAttributes;
 import android.media.SoundPool;
@@ -39,7 +40,17 @@ public class MainActivity extends AppCompatActivity
 
         Point size = new Point();
         getWindowManager().getDefaultDisplay().getSize(size);
-        int w = size.x / 8;
+        int orientation = getResources().getConfiguration().orientation;
+        int w = 0;
+        if(orientation == 1)
+        {
+            w = size.x / 8;
+        }
+        if(orientation == 2)
+        {
+            w = size.y / 10;
+        }
+
 
         mBoardView = new BoardView(this, w, bh);
 

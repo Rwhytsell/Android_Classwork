@@ -2,9 +2,11 @@ package com.example.seanr.chapter3chess;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.GridLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 
 /**
@@ -25,6 +27,12 @@ public class BoardView extends GridLayout
         super(context);
         setColumnCount(8);
         setRowCount(8);
+
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.MATCH_PARENT);
+        params.weight = 1.0f;
+        params.gravity = Gravity.CENTER;
+
+        setLayoutParams(params);
 
         squares = new ImageView[8][8];
 
