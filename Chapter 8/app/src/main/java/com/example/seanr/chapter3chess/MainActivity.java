@@ -21,6 +21,8 @@ public class MainActivity extends AppCompatActivity
     private SoundPool.Builder spb = new SoundPool.Builder();
     private SoundPool sp = spb.build();
     int pop = 0;
+    int thud = 0;
+    int bad = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -29,7 +31,9 @@ public class MainActivity extends AppCompatActivity
         mBoardModel = new BoardModel();
         mBoardModel.startGame();
 
-        pop = sp.load(this, R.raw.thud, 1);
+        pop = sp.load(this, R.raw.pop, 1);
+        thud = sp.load(this, R.raw.thud, 1);
+        bad = sp.load(this, R.raw.bad, 1);
 
         ButtonHandler bh = new ButtonHandler();
 
@@ -104,9 +108,9 @@ public class MainActivity extends AppCompatActivity
                     if (piece.getName() == "EPT") {
                         holding = false;
                         mBoardModel.movePiece(heldLocation, coords);
-
+                        sp.play(thud,0.99f, 0.99f, 1, 0, 1.08844f);
                     } else {
-
+                        sp.play(bad,0.99f, 0.99f, 1, 0, 1.08844f);
                     }
                 }
             }
