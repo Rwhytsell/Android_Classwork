@@ -4,6 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#07fc17" >
+    android:background="#07fc17"
+    android:gravity="center">
+
+    <LinearLayout style="@style/wrapCenterWeight1">
+
+        <TextView
+            android:id="@+id/status"
+            style="@style/textStyle"
+            android:text="Please try to guess the number" />
+    </LinearLayout>
 
     </LinearLayout>
