@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#fffb05"
+    android:background="#a3a39c"
     android:gravity="center">
 
     <LinearLayout
@@ -22,6 +22,7 @@
         <Button style="@style/buttonStyle"
             android:id="@+id/submit"
             android:text="Submit"
+            android:onClick="play"
             />
     </LinearLayout>
 

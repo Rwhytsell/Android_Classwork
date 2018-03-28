@@ -25,7 +25,7 @@
             android:id="@+id/player_input"
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:background="#fffb05"
+            android:background="#a3a39c"
             android:layout_weight="1"
             android:layout_height="match_parent" >
 
@@ -36,32 +36,6 @@
                 android:layout_height="0dp"
                 android:name="com.example.ethan.chapter9.InputFragment"
             />
-
-        <!--<LinearLayout-->
-            <!--android:id="@+id/game_control"-->
-            <!--android:orientation="vertical"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:background="#ff00f7"-->
-            <!--android:layout_height="match_parent" >-->
-                <!--&lt;!&ndash;<fragment&ndash;&gt;-->
-                    <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
-                    <!--&lt;!&ndash;android:layout_height="match_parent"&ndash;&gt;-->
-                    <!--&lt;!&ndash;android:name="com.example.ethan.chapter9.GameControlFragment"&ndash;&gt;-->
-                <!--&lt;!&ndash;/>&ndash;&gt;-->
-
-        <!--<LinearLayout-->
-            <!--android:id="@+id/rng"-->
-            <!--android:orientation="vertical"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_weight="1"-->
-            <!--android:background="#051548"-->
-            <!--android:layout_height="0dp" >-->
-                <!--<fragment-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="match_parent"-->
-                    <!--android:name="com.example.ethan.chapter9.RandomNumFragment"-->
-                    <!--/>-->
-
         </LinearLayout>
 
     </LinearLayout>

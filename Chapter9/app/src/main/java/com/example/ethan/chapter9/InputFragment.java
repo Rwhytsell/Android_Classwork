@@ -6,8 +6,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+/**
+ * The type Input fragment.
+ */
 public class InputFragment extends Fragment
 {
+    /**
+     * Instantiates a new Input fragment.
+     */
     public InputFragment()
     {
 

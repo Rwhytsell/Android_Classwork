@@ -6,8 +6,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+/**
+ * The type Prompt fragment.
+ */
 public class PromptFragment extends Fragment
 {
+    /**
+     * Instantiates a new Prompt fragment.
+     */
     public PromptFragment()
     {
 
