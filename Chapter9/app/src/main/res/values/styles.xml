@@ -23,7 +23,7 @@
     </style>
 
     <style name="editTextStyle" parent="textStyle">
-        <item name="android:inputType">textCapCharacters</item>
+        <item name="android:inputType">number</item>
         <item name="android:background">@color/inputColor</item>
         <item name="android:hint">Type a number here</item>
     </style>

@@ -10,9 +10,9 @@
     <LinearLayout style="@style/wrapCenterWeight1">
 
         <TextView
-            android:id="@+id/status"
+            android:id="@+id/player_prompt"
             style="@style/textStyle"
-            android:text="Please try to guess the number" />
+            android:text="Please try to guess the random number between 1 and 100." />
     </LinearLayout>
 
     </LinearLayout>

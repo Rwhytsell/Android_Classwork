@@ -34,9 +34,5 @@ public class RngModel
         }
         return "Not even close bro!";
     }
-
-
-
-
 }
 

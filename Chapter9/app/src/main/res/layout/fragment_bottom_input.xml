@@ -4,15 +4,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#07fc17"
+    android:background="#fffb05"
     android:gravity="center">
 
-    <LinearLayout style="@style/wrapCenterWeight1">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true">
 
-        <TextView
-            android:id="@+id/status"
-            style="@style/textStyle"
-            android:text="Please try to guess the number" />
+        <EditText style="@style/editTextStyle"
+            android:id="@+id/numInput"
+            android:hint="Ex: 1"
+            android:imeOptions="actionDone"
+            />
+
+        <Button style="@style/buttonStyle"
+            android:id="@+id/submit"
+            android:text="Submit"
+            />
     </LinearLayout>
 
-    </LinearLayout>
+</LinearLayout>
