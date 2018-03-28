@@ -35,6 +35,11 @@
             android:layout_width="match_parent"
             android:background="#ff00f7"
             android:layout_height="0dp" />
+                <fragment
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:name="com.example.ethan.chapter9.GameControlFragment"
+                />
 
         <LinearLayout
             android:id="@+id/rng"
@@ -43,6 +48,11 @@
             android:layout_weight="1"
             android:background="#051548"
             android:layout_height="0dp" />
+                <fragment
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:name="com.example.ethan.chapter9.RandomNumFragment"
+                    />
 
     </LinearLayout>
 
